@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -24,12 +26,14 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
+    
 
     /**
      * Create a new controller instance.
@@ -69,5 +73,20 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    
+    protected function redirectTo()  //on crée une fonction pour être UTILISATEUR
+    {
+        if (Auth::user()->role == 'user') // tte personne qui va créer un compte sera un utilisateur grace au role USER
+        {
+            return '/user/index';
+        }
+        else 
+        {
+            Auth::logout(); //deconnecte la personne
+            Session::flush(); //detruire la session cours
+            return '/login';  //page de connexion
+        }
     }
 }
