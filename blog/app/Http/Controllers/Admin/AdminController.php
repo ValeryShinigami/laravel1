@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
     public function __construct() //qd on fait appel au construct on utilise le middleware qui s'appel auth
     {
-        $this->middleware('auth'); //middleware sécurise la barre d'url
+        $this->middleware(['auth', 'admin']); //middleware sécurise la barre d'url
     }
 
     public function index()

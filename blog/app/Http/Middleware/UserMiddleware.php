@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class AdminMiddleware
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,7 +18,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role == 'admin')
+        if (Auth::user()->role == 'user')
         {
             return $next($request); //pour faire passer uniquement l'admin 
         }
@@ -28,7 +28,6 @@ class AdminMiddleware
             Session::flush(); //detruire sa session 
             return redirect()->route('login');
         }
-
 
 
         return $next($request);
