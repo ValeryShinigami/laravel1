@@ -66,12 +66,15 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+
+     //$data remplace le $request
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => 'user'
         ]);
     }
 
@@ -84,8 +87,8 @@ class RegisterController extends Controller
         }
         else 
         {
-            Auth::logout(); //deconnecte la personne
-            Session::flush(); //detruire la session cours
+            Auth::logout(); //deconnecte la personne pour détruire la session en cours
+            Session::flush(); //detruire toutes les sessions en  cours pour tout réinitialiser
             return '/login';  //page de connexion
         }
     }
