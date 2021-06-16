@@ -9,7 +9,8 @@
 
             <div class="form-group">
                 <label for="nanme">Nom</label>
-                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
+                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}"> 
+                <div class="text-danger">{{ $errors->first('name', ':message')}}</div>
             </div>
             <div class="form-group text-center">
                 <input type="submit" class="btn btn-success">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -40,14 +41,14 @@ class CategoryController extends Controller
         
         $validator = Validator::make($request->all(), 
         [
-            "name" => ['required', 'string', 'max:255', "exists:categories,name", 'unique.categories'] //exists = unique mais en ++ est ce que le nom envoyé dans la requête existe deja
+            "name" => ['required', 'string', 'max:255', 'unique:categories'], //exists = unique mais en ++ est ce que le nom envoyé dans la requête existe deja
         ], 
         
         [
             "name.required" => "le nom est obligatoire",
             "name.string" => "entrez une chaine de caractère valide",
             "name.max" => "entrez au max 255 caractères",
-            "name.exists" => "cette catégorie n'existe pas dans la base de donnée",
+            //"name.exists" => "cette catégorie n'existe pas dans la base de donnée",
             "name.unique" => "cette catégorie existe déjà. Veuillez en choisir une autre"
         
         ]);
@@ -59,8 +60,15 @@ class CategoryController extends Controller
 
         //et si c'est bon on rentre les infos dans la BDD
         
+        Category::create([
+            "name" => $request->name
+        ]);
 
         //puis on redirige l'utilisateur administrateur vers la page index des catégories
+
+        return redirect()->route("admin.categories.index")->with([
+            "success" => "Votre catégorie a été créée avec succès."
+        ]);
     }
 
     /**
