@@ -37,3 +37,5 @@ Route::get('admin/index', [App\Http\Controllers\Admin\AdminController::class, 'i
 Route::get('admin/categories/index', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin.categories.index');
 
 Route::get('admin/categories/create', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('admin.categories.create');
+
+Route::post('admin/categories/store', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('admin.categories.store');

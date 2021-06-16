@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unigue();
-            $table->string('slug')->unigue(); // l'ecriture sera en miniscule et les espaces remplacés par des tirets pour avoir un meilleur référencement on utilise le slug
+            $table->string('slug')->unigue(); // l'écriture sera en miniscule et les espaces remplacés par des tirets pour avoir un meilleur référencement on utilise le slug
             $table->timestamps();
         });
     }
