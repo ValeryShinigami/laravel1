@@ -12,6 +12,9 @@
            </ul>
         </div>
         <div class="col-md-10">
+            <h1 class="text-center text-ocean my-3">
+                @yield('h1')
+            </h1>
             @yield('mycontent')
         </div>
 
