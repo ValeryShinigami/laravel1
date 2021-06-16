@@ -5,3 +5,33 @@
 .bg-ocean{
     background: rgb(1, 1, 51);
 }
+
+.sidebar a .drop-a{
+    text-decoration: none;
+    transition: 1s;
+}
+
+.sidebar a:hover, .drop-a:hover{
+    margin-left: 10px;
+    transition: 1s;
+}
+
+.sidebar{
+    min-height: 90vh;
+}
+
+
+@media screen and (max-width: 625px)
+{
+    .sidebar {
+        min-height: auto;
+    }
+}
+
+.text-ocean{
+    color: rgb(4, 4, 66);
+}
+
+.bb{
+    background: rgb(7, 11, 200);
+}

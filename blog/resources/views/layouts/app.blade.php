@@ -59,7 +59,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right bg-ocean text-center" aria-labelledby="navbarDropdown">
-                                    <a class="text-white text-decoration-none py-3" href="{{ route('logout') }}"
+                                    <a class="drop-a text-white text-decoration-none py-3" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         Déconnexion
@@ -76,7 +76,8 @@
             </div>
         </nav>
 
-        <main class="py-4">
+
+        <main class="">
             @yield('content')
         </main>
     </div>
