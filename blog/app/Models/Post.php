@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class Post extends Model
 {
     use HasFactory;
     use Sluggable;
@@ -27,9 +27,10 @@ class Category extends Model
         ];
     }
 
-    public function posts()// une catégorie peut avoir plusieurs posts d'ou le posts au pluriel
-    {
-        return $this->hasMany(Post::class);
-    }
+    
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
