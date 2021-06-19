@@ -32,7 +32,7 @@ Route::get('logout',function()
 
 Route::get('/user/index', [App\Http\Controllers\User\UserController::class, 'index'])->name('user.index');
 
-Route::get('admin/index', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.index');
+Route::get('admin/index', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.index');//->middleware(['auth', 'admin'])on peut ajouter le middlerware pour sécuriser l'url de chaque controller
 
 Route::get('admin/categories/index', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin.categories.index');
 

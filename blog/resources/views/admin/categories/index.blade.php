@@ -59,7 +59,7 @@
         </table>
     </div>
 
-    <div>
+    <div class="d-flex justify-content-center align-items-center">
         {{ $categories->links() }} {{-- ajouter les boutons de pagination --}}
     </div>
 @endsection
