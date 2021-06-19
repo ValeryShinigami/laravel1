@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all(); //pour recuperer toutes les catégories
+        $categories = Category::paginate(10); //pour recuperer toutes les catégories
         return view('admin.categories.index', compact('categories')); //pour le passer a la view index on utilise la fonction compatc()
     }
 
@@ -95,6 +95,14 @@ class CategoryController extends Controller
         // $category = Category::find($id);
         $category = Category::where('id', $id)->first();
         //if ($category) //le if pour vérifier que si ca existe return true alors sinon redirection
+
+        if (!$category) 
+        {
+            return redirect()->route('admin.categories.index')->with([
+                "warning" => "Cette catégorie n'existe pas"
+            ]);
+        }
+        else
         {
             return view("admin.categories.edit", compact('category'));
         }
