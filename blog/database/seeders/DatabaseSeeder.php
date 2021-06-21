@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create(); //10 le nombre de user 
-        \App\Models\Category::factory(50)->create(); //50 le nombre de catégory
+       // \App\Models\User::factory(10)->create(); //10 le nombre de user 
+        \App\Models\Category::factory(3)->create(); //50 le nombre de catégory
 
         $admin = User::create([
             'name' => 'vk',

@@ -34,4 +34,23 @@
 
 .bb{
     background: rgb(7, 11, 200);
+    
+}
+
+.sauv, .theadImage{
+    background: rgb(7, 11, 200);
+}
+
+.theadImage, .lire{
+    color: white;
+    
+}
+
+.barre{
+    margin-top: 2%;
+    border-radius: 8px;
+}
+
+.modifier{
+    margin-bottom: 2%;
 }

@@ -7,7 +7,8 @@
            <ul class="list-group bg-ocean">
                <div class="list-group bg-ocean">
                    <a href="{{ route('admin.index') }}" class="list-group-item bg-ocean text-white">Accueil</a>
-                   <a href="{{ route('admin.categories.index') }}" class="list-group-item bg-ocean text-white">Catégorie</a>
+                   <a href="{{ route('admin.categories.index') }}" class="list-group-item bg-ocean text-white">Catégories</a>
+                   <a href="{{ route('admin.posts.index') }}" class="list-group-item bg-ocean text-white">Articles</a>
                </div>
            </ul>
         </div>

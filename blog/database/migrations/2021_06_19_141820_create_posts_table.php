@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('image')->nullable(); //pour suivre le chemin qui permet de recupérer une image (elles ne sont pas dans la BDD) NULLABLE permet de dire que ce n'est pas obligatoire
             $table->longText('content'); //longText permet une grande mémoire à la redaction des articles
             $table->boolean('published')->default(false); //donner la possibilité au redacteur de sauvegarder ses données avant de les publier FASLE = tout article ecrit ne sera pas publié
+            $table->timestamp('published_at')->nullable(); //date à laquelle on publie l'article
             $table->softDeletes(); //on ne supprime pas on le déplace comme une sorte de corbeil
             $table->timestamps();
 
