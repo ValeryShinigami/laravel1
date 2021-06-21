@@ -103,8 +103,35 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $post = Post::find($id);
+
+        if ($post) 
+        {
+            return view('admin.posts.show', compact('post'));
+        }
+        else 
+        {
+            return redirect()->route("admin.posts.index")->with(["warning" => "cette article n'existe pas"]);
+                    
+        }
+
+    }   
+    
+    public function published(Request $request, $id)
+        {
+           // dd($request->published_input);
+
+            $post = Post::find($id);
+
+            if ($request->has('published_input')) 
+            {
+                $post->update([
+                    "published" => true,
+                    "published_at" => now(),
+                ]);
+            } 
+        }     
+
 
     /**
      * Show the form for editing the specified resource.
