@@ -9,7 +9,23 @@
 </div>
 
 @if (session('warning'))
-{{--RAJOUTER CODE AVEC LA VIDEO --}}
+    <div class="alert alert-warning alert -dismissible fade show" role="alert">
+        {{ session('warning') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label=Close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="alert alert-success alert -dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label=Close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+    </div>
 @endif
 
 <div class="barre table-responsive">
@@ -36,19 +52,35 @@
                             <a href="{{ route('admin.posts.show', $post->id) }}" class="lire btn btn-sm btn-info">Lire</a>
                         </td>
                         <td>
-                            <p>{{ $post->published == 1 ? 'Publié' : 'Non publié' }}</p>
+                            @if ($post->published == 1)
+                               <div>
+                                    publié
+                               </div> 
+                               <div>
+                                   <small>le {{ $post->published_at->format("d/m/Y à H:i:s") }}</small>
+                               </div>
+                               @else
+                                <div>
+                                    Non publié
+                                </div>
+
+
+                            @endif
+
+
+                            {{--<p>{{ $post->published == 1 ? 'Publié' : 'Non publié' }}</p>--}}
                             <form action="{{ route('admin.posts.published', $post->id) }}" method="POST">
                                 @csrf
                                 @method('put')
                                 <div class="custom-control custom-switch">
-                                     <input type="checkbox" name="published_input" class="custom-control-input" id="switch-{{$post->id}}" onchange="this.form.submit()">
+                                     <input type="checkbox" {{ $post->published ==1 ? 'checked' : ''}}  name="published_input" class="custom-control-input" id="switch-{{$post->id}}" onchange="this.form.submit()">
                                      <label class="custom-control-label" for="switch-{{ $post->id}}"></label>
                                  </div>
                              </form>
                         </td>
                             
                         <td>
-                            <a href="" class="modifier btn btn-sm btn-secondary">Modifier</a>
+                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="modifier btn btn-sm btn-secondary">Modifier</a>
                             <form action="" method="POST">
                                 @csrf
                                 <input type="submit" value="Corbeille" class="btn btn-sm btn-danger" onclick="return confirm('Déplacer cette article dans la corbeille ?')">

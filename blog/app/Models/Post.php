@@ -13,6 +13,7 @@ class Post extends Model
     use Sluggable;
     
     protected $guarded = []; //pour faire passer les informations des inputs
+    protected $dates = ["created_at", "updated_at", "deleted_at", "published_at"]; //on redeclare toutes les dates de type post
     /**
      * Return the sluggable configuration array for this model.
      *

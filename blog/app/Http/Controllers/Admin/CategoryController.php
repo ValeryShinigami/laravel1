@@ -144,6 +144,8 @@ class CategoryController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        $category->slug = null;
+
         $category->update([
             "name"=> $request->name
         ]);

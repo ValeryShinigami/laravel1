@@ -46,3 +46,5 @@ Route::get('/admin/posts/create', [App\Http\Controllers\Admin\PostController::cl
 Route::post('/admin/posts/store', [App\Http\Controllers\Admin\PostController::class, 'store'])->name('admin.posts.store');
 Route::get('/admin/posts/show/{id}', [App\Http\Controllers\Admin\PostController::class, 'show'])->name('admin.posts.show');
 Route::put('/admin/posts/published/{id}', [App\Http\Controllers\Admin\PostController::class, 'published'])->name('admin.posts.published');
+Route::get('/admin/posts/edit/{id}', [App\Http\Controllers\Admin\PostController::class, 'edit'])->name('admin.posts.edit');
+Route::put('/admin/posts/update/{id}', [App\Http\Controllers\Admin\PostController::class, 'update'])->name('admin.posts.update');

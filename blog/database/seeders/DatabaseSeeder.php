@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
        // \App\Models\User::factory(10)->create(); //10 le nombre de user 
-        \App\Models\Category::factory(3)->create(); //50 le nombre de catégory
+       // \App\Models\Category::factory(3)->create(); //50 le nombre de catégory
 
         $admin = User::create([
             'name' => 'vk',
@@ -32,7 +33,11 @@ class DatabaseSeeder extends Seeder
             'role' => 'user'
         ]);
 
-        
+        $categoryO = Category::create(["name" => "Developpement web"]);
 
+        $category1 = Category::create(["name" => "Developpement mobile"]);
+
+        $category2 = Category::create(["name" => "Developpement logiciel"]);
     }
+
 }
