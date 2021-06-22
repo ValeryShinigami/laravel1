@@ -6,11 +6,13 @@ use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
     use HasFactory;
     use Sluggable;
+    use SoftDeletes;
     
     protected $guarded = []; //pour faire passer les informations des inputs
     protected $dates = ["created_at", "updated_at", "deleted_at", "published_at"]; //on redeclare toutes les dates de type post

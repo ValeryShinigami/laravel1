@@ -266,8 +266,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function trashed($id) //pour déplacer dans une corbeille avant la suppression definitive
     {
-        //
+        $post = Post::find($id);
+
+        $post->delete(); // la on déplace l'article dans une corbeille
+
+        return redirect()->route('admin.posts.index')->with(["success" => "article déplacé dans la corbeille"]);
     }
 }
