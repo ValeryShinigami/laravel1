@@ -8,7 +8,7 @@
 @section('mycontent')
 
     <div class="container">
-         {{ $post->content}}
+         {!! $post->content !!} {{-- pour retirer les balises html dans la rédaction pour lire --}}
     </div>
     
 @endsection

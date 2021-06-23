@@ -1,5 +1,10 @@
 @extends('admin.template')
 
+@section('summernote')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+@endsection
+
 @section('h1','Modifier cet article')
     
 @section('mycontent')
@@ -40,6 +45,13 @@
     <div class="form-group">
         <label for="content">Contenu</label>
         <textarea name="content" id="content" class="form-control" rows="10">{{ $post->content }}</textarea>
+        <script>
+            $('#content').summernote({
+              placeholder: 'Bonne rédaction',
+              tabsize: 2,
+              height: 100
+            });
+          </script>
         <div class="text-danger">{{ $errors->first('content', ':message') }}</div>
     </div>
 

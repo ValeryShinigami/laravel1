@@ -49,3 +49,16 @@ Route::put('/admin/posts/published/{id}', [App\Http\Controllers\Admin\PostContro
 Route::get('/admin/posts/edit/{id}', [App\Http\Controllers\Admin\PostController::class, 'edit'])->name('admin.posts.edit');
 Route::put('/admin/posts/update/{id}', [App\Http\Controllers\Admin\PostController::class, 'update'])->name('admin.posts.update');
 Route::delete('/admin/posts/trashed/{id}', [App\Http\Controllers\Admin\PostController::class, 'trashed'])->name('admin.posts.trashed');
+
+//----------------------------- tags routes ------------------------------
+Route::get('/admin/tags/index', [App\Http\Controllers\Admin\TagController::class, 'index'])->name('admin.tags.index');
+Route::get('/admin/tags/create', [App\Http\Controllers\Admin\TagController::class, 'create'])->name('admin.tags.create');
+Route::post('/admin/tags/store', [App\Http\Controllers\Admin\TagController::class, 'store'])->name('admin.tags.store');
+Route::get('/admin/tags/edit/{id}', [App\Http\Controllers\Admin\TagController::class, 'edit'])->name('admin.tags.edit');
+Route::patch('/admin/tags/update/{id}', [App\Http\Controllers\Admin\TagController::class, 'update'])->name('admin.tags.update');
+Route::delete('/admin/tags/delete/{id}', [App\Http\Controllers\Admin\TagController::class, 'destroy'])->name('admin.tags.delete');
+
+//----------------------------- trash routes ------------------------------
+Route::get('/admin/trash/index', [App\Http\Controllers\Admin\TrashController::class, 'index'])->name('admin.trash.index');
+Route::get('/admin/trash/posts/restore/{id}', [App\Http\Controllers\Admin\TrashController::class, 'restore'])->name('admin.trash.posts.restore');
+Route::delete('/admin/trash/posts/delete/{id}', [App\Http\Controllers\Admin\TrashController::class, 'delete'])->name('admin.trash.posts.delete');

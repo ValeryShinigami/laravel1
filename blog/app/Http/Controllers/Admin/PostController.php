@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {  
+    public function __construct()
+    {
+        return $this->middleware(['auth', 'admin'] );
+    }
+    /*
     /**
      * Display a listing of the resource.
      *
@@ -269,6 +274,8 @@ class PostController extends Controller
     public function trashed($id) //pour déplacer dans une corbeille avant la suppression definitive
     {
         $post = Post::find($id);
+
+        $post->update(["published" => false, "published_at" => null,]);
 
         $post->delete(); // la on déplace l'article dans une corbeille
 

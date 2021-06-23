@@ -1,5 +1,17 @@
 @extends('admin.template')
 
+@section('datatables')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+
+    <script>
+        $(document).ready( function () {
+        $('#table').DataTable();
+        } );
+    </script>
+
+@endsection
+
 @section('h1', 'Liste des articles')
 
 @section('mycontent')
@@ -29,7 +41,7 @@
 @endif
 
 <div class="barre table-responsive">
-    <table class="table table-striped table-hover text-center">
+    <table id="table" class="table table-striped table-hover text-center">
         <thead class="theadImage">
             <tr>
                 <th>Image</th>
